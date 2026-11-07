@@ -10,7 +10,9 @@ import { Projects } from './sections/Projects'
 import { Experience } from './sections/Experience'
 import { Education } from './sections/Education'
 import { Services } from './sections/Services'
+import { Certifications } from './sections/Certifications'
 import { Contact } from './sections/Contact'
+import { SafeBoundary } from './components/SafeBoundary'
 import { useSmoothScroll } from './hooks/useSmoothScroll'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -36,6 +38,23 @@ function ScrollProgress() {
 
 export default function App() {
   const [entered, setEntered] = useState(false)
+  const [load3D, setLoad3D] = useState(false)
+
+  // The WebGL background is decorative: load it only on capable desktops, after the intro, when the browser is idle.
+  useEffect(() => {
+    if (!entered) return
+    const capable = window.matchMedia('(pointer: fine) and (min-width: 1024px)').matches
+      && !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      && (navigator.hardwareConcurrency ?? 4) >= 4
+      && !(navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData
+    if (!capable) return
+    if ('requestIdleCallback' in window) {
+      const id = window.requestIdleCallback(() => setLoad3D(true), { timeout: 2500 })
+      return () => window.cancelIdleCallback(id)
+    }
+    const timer = globalThis.setTimeout(() => setLoad3D(true), 1200)
+    return () => globalThis.clearTimeout(timer)
+  }, [entered])
   useSmoothScroll()
 
   const openPortfolio = useCallback(() => {
@@ -68,7 +87,7 @@ export default function App() {
 
   return (
     <MotionConfig reducedMotion="user">
-      <Suspense fallback={null}><BubbleWorld /></Suspense>
+      {load3D && <SafeBoundary><Suspense fallback={null}><BubbleWorld /></Suspense></SafeBoundary>}
       {!entered && <Preloader onComplete={openPortfolio} />}
       <div className={`site-shell${entered ? ' site-shell--ready' : ''}`}>
         <Navbar />
@@ -79,13 +98,13 @@ export default function App() {
           <Projects />
           <Experience />
           <Education />
+          <Certifications />
           <Services />
           <Contact />
         </main>
       </div>
       <Cursor />
       <ScrollProgress />
-      <div className="film-grain" aria-hidden="true" />
     </MotionConfig>
   )
 }

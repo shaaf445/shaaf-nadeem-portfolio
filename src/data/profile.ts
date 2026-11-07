@@ -16,6 +16,8 @@ export const profile = {
   location: 'Bahawalpur, Pakistan',
   email: 'shaafnadeem14@gmail.com',
   photo: '/images/profile.jpg',
+  photoCutout: '/images/profile-cutout.webp',
+  photoCutoutSmall: '/images/profile-cutout-sm.webp',
   bio: [
     "I'm a Computer Science student at the Islamia University of Bahawalpur and a Web Developer at TechNest Nova (Private) Limited.",
     'I build Python/FastAPI backend applications, REST APIs, database-driven systems and authentication workflows.',
@@ -24,19 +26,20 @@ export const profile = {
   languages: ['Urdu (native)', 'English'],
   aboutStats: [
     { value: '2026', label: 'Joined TechNest Nova', countUp: true },
-    { value: '3', label: 'Automation platforms (Zapier, Make, n8n)', countUp: true },
-    { value: 'BSCS', label: 'Currently pursuing', countUp: false },
+    { value: '6', label: 'Featured projects', countUp: true },
+    { value: '3', label: 'Certifications', countUp: true },
     { value: 'FastAPI', label: 'Core backend stack', countUp: false },
   ],
   contactMessage: 'Have a project, an automation idea, or a backend to build? Reach out directly.',
-  cvPath: '/cv.pdf', // TODO: Add cv.pdf to the public folder.
+  cvPath: '/cv.pdf',
 }
 
 export const navigation = [
   { label: 'About', href: '#about' },
   { label: 'Skills', href: '#skills' },
+  { label: 'Projects', href: '#work' },
   { label: 'Experience', href: '#experience' },
-  { label: 'Education', href: '#education' },
+  { label: 'Certifications', href: '#certifications' },
   { label: 'Contact', href: '#contact' },
 ]
 

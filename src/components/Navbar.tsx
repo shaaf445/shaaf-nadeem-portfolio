@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react'
 import { ArrowUpRight, Menu, X } from 'lucide-react'
 import { navigation, profile } from '../data/profile'
+import { Logo } from './Logo'
 
 export function Navbar() {
   const [active, setActive] = useState('top')
   const [open, setOpen] = useState(false)
 
   useEffect(() => {
-    const sections = ['top', 'about', 'skills', 'work', 'experience', 'education', 'contact']
+    const sections = ['top', 'about', 'skills', 'work', 'experience', 'education', 'certifications', 'contact']
       .map((id) => document.getElementById(id))
       .filter((item): item is HTMLElement => item !== null)
     const observer = new IntersectionObserver((entries) => {
@@ -26,8 +27,7 @@ export function Navbar() {
       <div className="scroll-progress" aria-hidden="true"><div /></div>
       <header className="site-header">
         <a className="brand" href="#top" onClick={closeMenu} aria-label={`${profile.name}, home`}>
-          <span className="brand-mark">{profile.initials}</span>
-          <span className="brand-name">{profile.name}<small>{profile.roleLabel}</small></span>
+          <Logo caption={profile.roleLabel} />
         </a>
         <nav className={`nav-links${open ? ' nav-links--open' : ''}`} aria-label="Main navigation">
           {navigation.map((item) => {

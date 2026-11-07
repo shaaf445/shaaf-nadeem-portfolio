@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { ArrowDownToLine, ArrowRight, ArrowUpRight, Check, Copy, MessageCircle } from 'lucide-react'
 import { contactMethods, profile, socials } from '../data/profile'
+import { Logo } from '../components/Logo'
 import { Reveal } from '../components/Reveal'
 import { SectionHeading } from '../components/SectionHeading'
 
@@ -28,7 +29,7 @@ export function Contact() {
 
   return (
     <section className="section-shell section-block contact-section" id="contact">
-      <SectionHeading index="07 / CONTACT" eyebrow="LET’S BUILD SOMETHING USEFUL" title={<>Have a project<br /><span className="text-gradient">in mind?</span></>} detail={profile.contactMessage} />
+      <SectionHeading index="08 / CONTACT" eyebrow="LET’S BUILD SOMETHING USEFUL" title={<>Have a project<br /><span className="text-gradient">in mind?</span></>} detail={profile.contactMessage} />
       <div className="contact-grid">
         <Reveal className="contact-left">
           <div className="contact-invite">
@@ -84,7 +85,7 @@ export function Contact() {
         </Reveal>
       </div>
       <footer className="site-footer">
-        <a className="brand footer-brand" href="#top"><span className="brand-mark">{profile.initials}</span><span className="brand-name">{profile.name}<small>{profile.roleLabel}</small></span></a>
+        <a className="brand footer-brand" href="#top"><Logo caption={profile.name.toUpperCase()} /></a>
         <p>{profile.location}<span>© {new Date().getFullYear()} {profile.name}</span></p>
         <nav className="social-links footer-social-links" aria-label="Social links">
           {socials.map((social) => {

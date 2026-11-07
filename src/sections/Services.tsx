@@ -7,7 +7,7 @@ import { SectionHeading } from '../components/SectionHeading'
 export function Services() {
   return (
     <section className="section-shell section-block services-section" id="services">
-      <SectionHeading index="06 / SERVICES" eyebrow="BACKEND & AUTOMATION" title={<>Build systems that<br /><span className="text-gradient">save time.</span></>} detail="Practical development and automation for real workflows." />
+      <SectionHeading index="07 / SERVICES" eyebrow="BACKEND & AUTOMATION" title={<>Build systems that<br /><span className="text-gradient">save time.</span></>} detail="Practical development and automation for real workflows." />
       <div className="services-grid">
         {services.map((service, index) => {
           const Icon = service.icon

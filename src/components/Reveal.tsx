@@ -6,7 +6,7 @@ import { useReducedMotion } from '../hooks/useReducedMotion'
 
 gsap.registerPlugin(ScrollTrigger)
 
-export function Reveal({ children, className = '', delay = 0 }: { children: ReactNode; className?: string; delay?: number }) {
+export function Reveal({ children, className = '', delay = 0, variant = 'fade' }: { children: ReactNode; className?: string; delay?: number; variant?: 'fade' | '3d' }) {
   const reducedMotion = useReducedMotion()
   const element = useRef<HTMLDivElement>(null)
 
@@ -19,12 +19,16 @@ export function Reveal({ children, className = '', delay = 0 }: { children: Reac
 
     const tween = gsap.fromTo(
       element.current,
-      { autoAlpha: 0, y: 24 },
+      variant === '3d'
+        ? { autoAlpha: 0, y: 70, rotateX: 18, z: -120, transformPerspective: 1200, transformOrigin: '50% 100%' }
+        : { autoAlpha: 0, y: 24 },
       {
         immediateRender: false,
         autoAlpha: 1,
         y: 0,
-        duration: 0.7,
+        rotateX: 0,
+        z: 0,
+        duration: variant === '3d' ? 1.1 : 0.7,
         delay,
         ease: 'power3.out',
         clearProps: 'opacity,visibility,transform',
@@ -40,7 +44,7 @@ export function Reveal({ children, className = '', delay = 0 }: { children: Reac
       tween.scrollTrigger?.kill()
       tween.kill()
     }
-  }, [delay, reducedMotion])
+  }, [delay, reducedMotion, variant])
 
   return (
     <div

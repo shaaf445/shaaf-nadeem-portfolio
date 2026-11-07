@@ -1,22 +1,25 @@
 export const experience = [
   {
     date: '15 JUL 2026 — PRESENT',
-    role: 'Web Developer (Backend & AI Automation)',
+    role: 'Web Developer — Backend & AI Automation',
     company: 'TechNest Nova (Private) Limited · Bahawalpur',
     bullets: [
-      'Build Python/FastAPI backend applications, REST APIs, database-driven systems and authentication workflows.',
-      'Design AI-powered business automations using Zapier, Make.com and n8n, including multi-step workflows, API integrations, webhooks, AI processing and Google Workspace.',
+      'Build AI automations end to end: an n8n Automated Student Admission System (forms, AI review, invoicing, registration, emails and a Sheets database).',
+      'Built a 31-node n8n AI Lead Qualification workflow with GPT-4o-mini deal scoring, Supabase, Google Sheets and human-in-the-loop email approval.',
+      'Built a Zapier AI Invoice Processing system: Gmail → PDF.co AI parser → AI classification → Google Sheets → value-based Slack alerts.',
+      'Build Python/FastAPI backend applications, REST APIs, database-driven systems and authentication workflows, including the AI Resume Analyzer API.',
+      'Design AI-powered business automations with Zapier, Make.com and n8n: multi-step workflows, API integrations, webhooks, AI processing and Google Workspace.',
       'Build automated content workflows, including YouTube automation and AI-driven content pipelines.',
+      'Developer on the TechNest Nova team building Maharat, a Flutter + FastAPI marketplace app for skilled workers.',
       'Focus on practical, scalable and efficient automation solutions.',
     ],
   },
-  // TODO: Verify the March 2026 end date; the fellowship is described as three months.
   {
     date: 'JAN 2026 — MAR 2026',
     role: 'Software Development Fellow',
     company: 'Click Chain Pakistan · Bahawalpur',
     bullets: [
-      'Took part in the Click Chain Fellowship 2026, an intensive program combining technical training, teamwork and real-world project experience.',
+      'Completed the 12-week Click Chain Fellowship 2026, an intensive program combining technical training, teamwork and real-world project experience.',
       'Developed full-stack web applications using Python (FastAPI) and modern development tools.',
       'Collaborated in agile teams on real client-based projects during the final month.',
       'Completed daily kata sessions to strengthen problem-solving and algorithmic thinking.',

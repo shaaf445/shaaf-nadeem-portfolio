@@ -1,6 +1,6 @@
 # Muhammad Shaaf Nadeem | Backend Developer & AI Automation Specialist
 
-A responsive, single-page portfolio built with React 18, TypeScript, Vite, Tailwind CSS, Three.js / React Three Fiber, GSAP, Lenis, and Framer Motion. The design includes a call-screen intro, a scroll-reactive instanced-bubble portrait, selected work, experience, services, and direct contact links.
+A responsive, 3D-animated single-page portfolio built with React 18, TypeScript, Vite, Three.js / React Three Fiber, GSAP, Lenis and Framer Motion.
 
 ## Get started
 
@@ -9,21 +9,46 @@ npm install
 npm run dev
 ```
 
-The site has no contact form or contact API. Use the email and LinkedIn links in the Contact section to reach out directly.
-
-Create a production build and preview it locally:
+Production build and local preview:
 
 ```bash
 npm run build
 npm run preview
 ```
 
-## Make it yours
+## Sections
 
-1. Profile details, navigation, and contact links live in `src/data/profile.ts`.
-2. Update experience, education, skills, services, and projects in `src/data/experience.ts`, `src/data/education.ts`, `src/data/skills.ts`, `src/data/services.ts`, and `src/data/projects.ts`.
-3. The supplied portrait is in `public/images/profile.jpg`; profile and bubble-portrait rendering use the photo path from `src/data/profile.ts`.
-4. Add your PDF as `public/cv.pdf`; the hero and contact buttons link to it.
-5. Edit email, WhatsApp, LinkedIn, and GitHub links in `src/data/profile.ts`. Project cards hide demo/source links until URLs are supplied in `src/data/projects.ts`.
+3D loader · Hero (3D tilt portrait) · About · Skills (3D tech-stack orbit) · Projects · Experience · Education · Certifications (3D cards + full-screen viewer) · Services · Contact
 
-The profile displays Muhammad Shaaf Nadeem and focuses on backend development and AI automation. The portrait uses sampled image brightness and alpha to distribute bubbles; reduce-motion preferences disable the heavy scene movement.
+## Where content lives
+
+| Content | File |
+| --- | --- |
+| Name, bio, links, navigation | `src/data/profile.ts` |
+| Projects and their documentation (Maharat, AI Resume Analyzer, AI ChatBot, Lead Qualification, Student Admission, Invoice automation) | `src/data/projects.ts` (`docs` field) |
+| Certifications | `src/data/certifications.ts` |
+| Experience, education, skills, services | `src/data/*.ts` |
+| Project cover images | `public/images/projects/` |
+| Certificate images | `public/images/certificates/` |
+| Profile photo | `public/images/profile.jpg` |
+| CV download | `public/cv.pdf` |
+
+To add a project, add an entry to `src/data/projects.ts` with an image in `public/images/projects/`. To add a certificate, drop the image in `public/images/certificates/` and add an entry to `src/data/certifications.ts`.
+
+## Brand
+
+- Theme: navy `#060a14`, blue `#3b82f6` / `#60a5fa`, gold accent `#e0b354` (variables at the top of `src/styles.css`).
+- Fonts: Plus Jakarta Sans and JetBrains Mono, self-hosted through `@fontsource` (no Google Fonts request).
+- Logo: `src/components/Logo.tsx` (SHAAF mark + wordmark); favicon at `public/favicon.svg`.
+
+## 3D and motion
+
+- `src/components/Preloader.tsx` — 3D gyroscope loader with the SHAAF logo; finishes automatically.
+- `src/components/Cursor.tsx` — custom cursor; add `data-cursor="Label"` to any element to show a label bubble.
+- `src/components/ProjectDocs.tsx` — 3D documentation modal opened by “Read docs”.
+
+- `src/components/Tilt3D.tsx` — pointer-driven 3D tilt with glare and depth layers (`depth-1` … `depth-4`).
+- `src/components/TechOrbit.tsx` — CSS-3D rotating tech-stack rings.
+- `src/components/Reveal.tsx` — scroll reveals, with a `variant="3d"` perspective entrance.
+- `src/styles-3d.css` — all 3D styles.
+- Visitors with "reduce motion" enabled get a calm, static version automatically.

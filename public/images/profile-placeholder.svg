@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 800" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="30" y1="20" x2="610" y2="780" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#15362C"/>
+      <stop offset=".52" stop-color="#111814"/>
+      <stop offset="1" stop-color="#282114"/>
+    </linearGradient>
+    <linearGradient id="person" x1="220" y1="190" x2="455" y2="710" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E9C990"/>
+      <stop offset="1" stop-color="#806044"/>
+    </linearGradient>
+    <radialGradient id="light" cx="0" cy="0" r="1" gradientTransform="matrix(250 330 -300 228 180 190)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#00C853" stop-opacity=".35"/>
+      <stop offset="1" stop-color="#00C853" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <path fill="url(#bg)" d="M0 0h640v800H0z"/>
+  <path fill="url(#light)" d="M0 0h640v800H0z"/>
+  <circle cx="320" cy="302" r="122" fill="url(#person)" opacity=".92"/>
+  <path fill="url(#person)" d="M87 800c15-161 103-270 233-270s218 109 233 270H87Z"/>
+  <path stroke="#D4AF37" stroke-opacity=".35" d="M34 34h572v732H34z"/>
+  <text x="320" y="748" fill="#F5F5F5" fill-opacity=".72" font-family="sans-serif" font-size="15" letter-spacing="5" text-anchor="middle">YOUR PORTRAIT GOES HERE</text>
+</svg>

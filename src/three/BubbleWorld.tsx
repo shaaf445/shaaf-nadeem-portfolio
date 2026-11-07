@@ -10,10 +10,10 @@ import { profile } from '../data/profile'
 gsap.registerPlugin(ScrollTrigger)
 
 const COLORS = {
-  gold: new Color('#e3c77a'),
-  emerald: new Color('#00c853'),
-  shadow: new Color('#29382d'),
-  float: [new Color('#00c853'), new Color('#d4af37'), new Color('#dfe8df'), new Color('#00ff88'), new Color('#806f42')],
+  gold: new Color('#7ac2e3'),
+  emerald: new Color('#3b82f6'),
+  shadow: new Color('#292f38'),
+  float: [new Color('#3b82f6'), new Color('#5fb5dd'), new Color('#dfe3e8'), new Color('#60a5fa'), new Color('#7fa9bd')],
 }
 
 function TrackPortraitAsset() {
@@ -45,7 +45,7 @@ function samplePortrait(image: HTMLImageElement): Point[] {
   const context = canvas.getContext('2d', { willReadFrequently: true })
   if (!context) return []
 
-  context.fillStyle = '#fff'
+  context.fillStyle = '#ffffff'
   context.fillRect(0, 0, width, height)
   context.filter = 'blur(0.7px)'
   context.drawImage(image, 0, 0, width, height)
@@ -92,9 +92,9 @@ function loadPortrait(): Promise<Point[]> {
 }
 
 function colorForBrightness(brightness: number) {
-  if (brightness > 0.69) return COLORS.gold.clone().lerp(new Color('#fff0cb'), Math.min(0.42, (brightness - 0.69) * 1.1))
-  if (brightness > 0.3) return COLORS.emerald.clone().lerp(new Color('#81d99a'), (brightness - 0.3) * 0.38)
-  return COLORS.shadow.clone().lerp(new Color('#526a55'), brightness * 0.4)
+  if (brightness > 0.69) return COLORS.gold.clone().lerp(new Color('#cfedfb'), Math.min(0.42, (brightness - 0.69) * 1.1))
+  if (brightness > 0.3) return COLORS.emerald.clone().lerp(new Color('#95afda'), (brightness - 0.3) * 0.38)
+  return COLORS.shadow.clone().lerp(new Color('#525c6a'), brightness * 0.4)
 }
 
 function makeBubbles(count: number, points: Point[]): Bubble[] {
@@ -220,7 +220,7 @@ function Bubbles({ count, progress, pointer, mobile }: {
         metalness={0.2}
         clearcoat={1}
         clearcoatRoughness={0.07}
-        emissive="#16351f"
+        emissive="#162235"
         emissiveIntensity={0.14}
         opacity={0.46}
         transparent
@@ -270,7 +270,7 @@ function CanvasFallback() {
       y: randomFor(index, 2),
       radius: 1 + randomFor(index, 3) * 3,
       phase: index * 0.4,
-      color: ['#00c853', '#d4af37', '#e9e9df', '#00ff88'][index % 4],
+      color: ['#3b82f6', '#5fb5dd', '#e9e9df', '#60a5fa'][index % 4],
     }))
     let frame = 0
     let width = 0
@@ -318,7 +318,7 @@ export function BubbleWorld() {
   const [size, setSize] = useState(() => typeof window === 'undefined' ? 1024 : window.innerWidth)
   const pointer = useRef({ x: 0, y: 0 })
   const progress = useRef({ value: 0 })
-  const count = size < 700 ? 1800 : 4000
+  const count = size < 1200 ? 1600 : 2400
 
   useEffect(() => {
     const onVisibilityChange = () => setVisible(!document.hidden)
@@ -342,15 +342,14 @@ export function BubbleWorld() {
       {visible && (
         <Canvas
           camera={{ position: [0, 0, 10], fov: 50 }}
-          dpr={[1, 1.5]}
+          dpr={[1, 1.25]}
           frameloop={reducedMotion ? 'demand' : 'always'}
           gl={{ alpha: true, antialias: false, powerPreference: 'low-power' }}
           fallback={<CanvasFallback />}
-          style={{ filter: 'drop-shadow(0 0 3px rgba(0,200,83,.12)) drop-shadow(0 0 7px rgba(212,175,55,.045))' }}
         >
           <ambientLight intensity={0.62} />
-          <pointLight position={[4, 5, 6]} intensity={42} color="#c6ffdd" />
-          <pointLight position={[-5, -2, 4]} intensity={22} color="#d4af37" />
+          <pointLight position={[4, 5, 6]} intensity={42} color="#77a4f8" />
+          <pointLight position={[-5, -2, 4]} intensity={22} color="#5fb5dd" />
           <Suspense fallback={null}><TrackPortraitAsset /></Suspense>
           <PortraitScrollDriver progress={progress.current} />
           <Bubbles count={count} progress={progress.current} pointer={pointer.current} mobile={size < 700} />
