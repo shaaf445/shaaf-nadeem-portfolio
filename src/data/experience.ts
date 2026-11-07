@@ -1,6 +1,6 @@
 export const experience = [
   {
-    date: '15 JUL 2026 — PRESENT',
+    date: '15 JUL 2025 — PRESENT',
     role: 'Web Developer — Backend & AI Automation',
     company: 'TechNest Nova (Private) Limited · Bahawalpur',
     bullets: [
@@ -12,6 +12,17 @@ export const experience = [
       'Build automated content workflows, including YouTube automation and AI-driven content pipelines.',
       'Developer on the TechNest Nova team building Maharat, a Flutter + FastAPI marketplace app for skilled workers.',
       'Focus on practical, scalable and efficient automation solutions.',
+    ],
+  },
+  {
+    date: 'JUN 2026 — PRESENT',
+    role: 'Backend Developer & AI Automation Specialist',
+    company: 'Bloggers Brackets · Bahawalpur',
+    bullets: [
+      'Develop and maintain backend systems and APIs for company projects.',
+      'Build AI automation workflows using n8n to streamline business processes.',
+      'Integrate tools such as Supabase and Google Sheets into automated pipelines.',
+      'Collaborate with the team to deliver reliable, scalable solutions.',
     ],
   },
   {
