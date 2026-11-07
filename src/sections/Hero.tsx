@@ -11,6 +11,8 @@ function MagneticLink({ href, children, className }: { href: string; children: R
     <a
       href={href}
       className={className}
+      target={href.startsWith('https://') ? '_blank' : undefined}
+      rel={href.startsWith('https://') ? 'noopener noreferrer' : undefined}
       onMouseMove={(event) => {
         if (reducedMotion) return
         const bounds = event.currentTarget.getBoundingClientRect()

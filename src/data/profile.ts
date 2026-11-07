@@ -15,6 +15,7 @@ export const profile = {
   tagline: 'I build Python/FastAPI backends and AI-powered automations that save time and scale.',
   location: 'Bahawalpur, Pakistan',
   email: 'shaafnadeem14@gmail.com',
+  workEmail: 'shaafnadeem@technestnova.com',
   photo: '/images/profile.jpg',
   photoCutout: '/images/profile-cutout.webp',
   photoCutoutSmall: '/images/profile-cutout-sm.webp',
@@ -34,6 +35,9 @@ export const profile = {
   cvPath: '/cv.pdf',
 }
 
+// Opens Gmail's compose window in a new tab with the recipient filled in.
+const gmailCompose = (to: string) => `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(to)}`
+
 export const navigation = [
   { label: 'About', href: '#about' },
   { label: 'Skills', href: '#skills' },
@@ -44,7 +48,7 @@ export const navigation = [
 ]
 
 export const socialLinks = {
-  email: { label: 'Email', href: `mailto:${profile.email}`, icon: Mail },
+  email: { label: 'Email', href: gmailCompose(profile.email), icon: Mail },
   whatsApp: { label: 'WhatsApp', href: 'https://wa.me/923206808639', icon: MessageCircle },
   linkedIn: { label: 'LinkedIn', href: 'https://www.linkedin.com/in/shaaf-nadeem-64a138430', icon: Linkedin },
   gitHub: { label: 'GitHub', href: 'https://github.com/shaaf445', icon: Github },
@@ -58,7 +62,14 @@ export const contactMethods = {
     value: profile.email,
     href: socialLinks.email.href,
     icon: socialLinks.email.icon,
-    external: false,
+    external: true,
+  },
+  workEmail: {
+    label: 'Work email',
+    value: profile.workEmail,
+    href: gmailCompose(profile.workEmail),
+    icon: Mail,
+    external: true,
   },
   linkedIn: {
     label: socialLinks.linkedIn.label,
