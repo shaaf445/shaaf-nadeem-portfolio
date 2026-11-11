@@ -1,6 +1,6 @@
-import { useEffect, useState, type ReactNode } from 'react'
+import { useEffect, useRef, useState, type ReactNode, type RefObject } from 'react'
 import { ArrowDown, ArrowDownToLine, ArrowUpRight, MoveUpRight } from 'lucide-react'
-import { motion } from 'framer-motion'
+import { motion, useScroll, useSpring, useTransform } from 'framer-motion'
 import { profile, socialLinks } from '../data/profile'
 import { useReducedMotion } from '../hooks/useReducedMotion'
 import { Tilt3D } from '../components/Tilt3D'
@@ -27,9 +27,49 @@ function MagneticLink({ href, children, className }: { href: string; children: R
   )
 }
 
+/**
+ * Scroll-linked fade for the hero portrait.
+ * Progress runs from 0 (page top) to 1 (portrait's bottom edge about to leave the screen),
+ * measured per device so the fade feels the same on phones, tablets and laptops.
+ * A soft spring smooths out jumpy touch / wheel scrolling.
+ */
+function usePortraitFade(target: RefObject<HTMLElement>, disabled: boolean) {
+  const { scrollY } = useScroll()
+  const fadeEnd = useRef(400)
+
+  useEffect(() => {
+    const measure = () => {
+      const el = target.current
+      if (!el) return
+      const rect = el.getBoundingClientRect()
+      const bottom = rect.bottom + window.scrollY
+      // Finish fading a little before the portrait scrolls off-screen.
+      fadeEnd.current = Math.max(220, bottom * 0.85)
+    }
+    measure()
+    window.addEventListener('resize', measure)
+    window.addEventListener('orientationchange', measure)
+    const late = window.setTimeout(measure, 1200)
+    return () => {
+      window.removeEventListener('resize', measure)
+      window.removeEventListener('orientationchange', measure)
+      window.clearTimeout(late)
+    }
+  }, [target])
+
+  const raw = useTransform(scrollY, (y) => (disabled ? 0 : Math.min(1, Math.max(0, y / fadeEnd.current))))
+  const progress = useSpring(raw, { stiffness: 140, damping: 28, mass: 0.6, restDelta: 0.0005 })
+  const opacity = useTransform(progress, [0, 0.15, 1], [1, 0.97, 0])
+  const y = useTransform(progress, [0, 1], [0, -48])
+  const scale = useTransform(progress, [0, 1], [1, 0.92])
+  return { opacity, y, scale }
+}
+
 export function Hero({ entered }: { entered: boolean }) {
   const [roleIndex, setRoleIndex] = useState(0)
   const reducedMotion = useReducedMotion()
+  const portraitRef = useRef<HTMLDivElement>(null)
+  const fade = usePortraitFade(portraitRef, reducedMotion)
 
   useEffect(() => {
     if (reducedMotion) return
@@ -64,6 +104,7 @@ export function Hero({ entered }: { entered: boolean }) {
             <a href={profile.cvPath} download className="button button--text">Download CV <ArrowDownToLine size={16} /></a>
           </div>
         </motion.div>
+        <motion.div ref={portraitRef} className="hero-side" style={reducedMotion ? undefined : fade}>
         <motion.div
           className="hero-index"
           initial={reducedMotion ? false : { opacity: 0 }}
@@ -72,7 +113,7 @@ export function Hero({ entered }: { entered: boolean }) {
         >
           <Tilt3D className="hero-portrait" max={14}>
             <div className="hero-portrait-card">
-              <img src={profile.photoCutout} srcSet={`${profile.photoCutoutSmall} 384w, ${profile.photoCutout} 768w`} sizes="(max-width: 760px) 200px, 300px" width={768} height={1075} alt={`Portrait of ${profile.name}`} fetchPriority="high" decoding="async" />
+              <img src={profile.photoCutout} srcSet={`${profile.photoCutoutSmall} 384w, ${profile.photoCutout} 768w`} sizes="(max-width: 760px) 200px, 300px" width={768} height={1075} alt={`Portrait of ${profile.name}`} loading="eager" fetchPriority="high" decoding="async" />
               <span className="hero-portrait-shine" aria-hidden="true" />
             </div>
             <span className="hero-portrait-ring hero-portrait-ring--a" aria-hidden="true" />
@@ -84,6 +125,7 @@ export function Hero({ entered }: { entered: boolean }) {
           </Tilt3D>
           <span>{profile.role}</span>
           <span>{profile.location}</span>
+        </motion.div>
         </motion.div>
       </div>
       <a className="hero-scroll" href="#about"><span className="hero-scroll-line" /><span>SCROLL TO EXPLORE</span><ArrowDown size={14} /></a>

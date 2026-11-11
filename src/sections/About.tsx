@@ -1,10 +1,9 @@
 import { useEffect, useRef } from 'react'
 import { animate, motion, useInView, useMotionValue, useTransform } from 'framer-motion'
-import { ArrowUpRight, Sparkles } from 'lucide-react'
+import { ArrowUpRight } from 'lucide-react'
 import { profile } from '../data/profile'
 import { Reveal } from '../components/Reveal'
 import { SectionHeading } from '../components/SectionHeading'
-import { Tilt3D } from '../components/Tilt3D'
 
 function CountUp({ value }: { value: string }) {
   const ref = useRef<HTMLSpanElement>(null)
@@ -25,17 +24,7 @@ export function About() {
   return (
     <section className="section-shell section-block about" id="about">
       <SectionHeading index="01 / ABOUT" eyebrow="BACKEND DEVELOPMENT & AUTOMATION" title={<>Practical systems.<br /><span className="text-gradient">Useful automation.</span></>} />
-      <div className="about-grid">
-        <Reveal className="about-portrait-wrap" variant="3d">
-          <Tilt3D className="about-portrait-tilt" max={8}>
-          <div className="about-portrait-frame">
-            <img src={profile.photoCutout} srcSet={`${profile.photoCutoutSmall} 384w, ${profile.photoCutout} 768w`} sizes="(max-width: 760px) 80vw, 420px" width={768} height={1075} alt={`Portrait of ${profile.name}`} loading="lazy" decoding="async" />
-            <span className="portrait-corner portrait-corner--tl" /><span className="portrait-corner portrait-corner--br" />
-            <span className="portrait-caption depth-3"><span className="eyebrow-dot" /> PRACTICAL SYSTEMS, BUILT WITH CARE</span>
-          </div>
-          </Tilt3D>
-          <div className="portrait-stamp"><Sparkles size={16} /><span>GOOD WORK<br />TAKES HEART</span></div>
-        </Reveal>
+      <div className="about-grid about-grid--single">
         <div className="about-copy">
           <Reveal>
             <p className="about-lead">Backend engineering and <span className="text-gold">AI automation</span> for practical problems.</p>
