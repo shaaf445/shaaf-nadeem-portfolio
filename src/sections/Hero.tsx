@@ -114,14 +114,8 @@ export function Hero({ entered }: { entered: boolean }) {
           <Tilt3D className="hero-portrait" max={14}>
             <div className="hero-portrait-card">
               <img src={profile.photoCutout} srcSet={`${profile.photoCutoutSmall} 384w, ${profile.photoCutout} 768w`} sizes="(max-width: 760px) 200px, 300px" width={768} height={1075} alt={`Portrait of ${profile.name}`} loading="eager" fetchPriority="high" decoding="async" />
-              <span className="hero-portrait-shine" aria-hidden="true" />
             </div>
-            <span className="hero-portrait-ring hero-portrait-ring--a" aria-hidden="true" />
-            <span className="hero-portrait-ring hero-portrait-ring--b" aria-hidden="true" />
             <span className="hero-portrait-badge depth-4"><span className="eyebrow-dot" />OPEN TO WORK</span>
-            <span className="hero-portrait-chip hero-portrait-chip--a depth-3">FastAPI</span>
-            <span className="hero-portrait-chip hero-portrait-chip--b depth-3">AI Automation</span>
-            <span className="hero-portrait-chip hero-portrait-chip--c depth-3">Flutter</span>
           </Tilt3D>
           <span>{profile.role}</span>
           <span>{profile.location}</span>
