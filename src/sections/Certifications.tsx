@@ -3,9 +3,9 @@ import { createPortal } from 'react-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Award, BadgeCheck, CalendarDays, ChevronLeft, ChevronRight, Eye, Pause, Play, X } from 'lucide-react'
 import { certifications, type Certification } from '../data/certifications'
-import { Reveal } from '../components/Reveal'
-import { SectionHeading } from '../components/SectionHeading'
-import { responsive } from '../lib/img'
+import { Reveal } from '../components/ui/Reveal'
+import { SectionHeading } from '../components/ui/SectionHeading'
+import { responsive } from '../utils/image'
 import { useReducedMotion } from '../hooks/useReducedMotion'
 
 const AUTOPLAY_MS = 6000

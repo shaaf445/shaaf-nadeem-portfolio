@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
-import { LogoMark } from './Logo'
-import { useReducedMotion } from '../hooks/useReducedMotion'
+import { LogoMark } from '../ui/Logo'
+import { useReducedMotion } from '../../hooks/useReducedMotion'
 
 type Props = { onComplete: () => void }
 

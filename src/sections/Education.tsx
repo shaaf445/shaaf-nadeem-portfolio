@@ -1,6 +1,6 @@
 import { education } from '../data/education'
-import { Reveal } from '../components/Reveal'
-import { SectionHeading } from '../components/SectionHeading'
+import { Reveal } from '../components/ui/Reveal'
+import { SectionHeading } from '../components/ui/SectionHeading'
 
 export function Education() {
   return (

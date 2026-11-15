@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react'
 import type { ReactNode } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { useReducedMotion } from '../hooks/useReducedMotion'
+import { useReducedMotion } from '../../hooks/useReducedMotion'
 
 gsap.registerPlugin(ScrollTrigger)
 

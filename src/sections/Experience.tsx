@@ -3,8 +3,8 @@ import { ChevronDown, ChevronUp } from 'lucide-react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { experience } from '../data/experience'
-import { Reveal } from '../components/Reveal'
-import { SectionHeading } from '../components/SectionHeading'
+import { Reveal } from '../components/ui/Reveal'
+import { SectionHeading } from '../components/ui/SectionHeading'
 
 gsap.registerPlugin(ScrollTrigger)
 

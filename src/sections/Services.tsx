@@ -1,8 +1,8 @@
 import { ArrowUpRight } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { services } from '../data/services'
-import { Reveal } from '../components/Reveal'
-import { SectionHeading } from '../components/SectionHeading'
+import { Reveal } from '../components/ui/Reveal'
+import { SectionHeading } from '../components/ui/SectionHeading'
 
 export function Services() {
   return (

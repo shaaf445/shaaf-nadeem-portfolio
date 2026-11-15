@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { useReducedMotion } from '../hooks/useReducedMotion'
+import { useReducedMotion } from '../../hooks/useReducedMotion'
 
 /**
  * Custom cursor: a precise dot, a lagging ring that grows on interactive elements,

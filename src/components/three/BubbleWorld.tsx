@@ -4,16 +4,16 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { Color, Object3D, TextureLoader, type InstancedMesh, type MeshPhysicalMaterial } from 'three'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { useReducedMotion } from '../hooks/useReducedMotion'
-import { profile } from '../data/profile'
+import { useReducedMotion } from '../../hooks/useReducedMotion'
+import { profile } from '../../data/profile'
 
 gsap.registerPlugin(ScrollTrigger)
 
 const COLORS = {
-  gold: new Color('#7ac2e3'),
-  emerald: new Color('#3b82f6'),
-  shadow: new Color('#292f38'),
-  float: [new Color('#3b82f6'), new Color('#5fb5dd'), new Color('#dfe3e8'), new Color('#60a5fa'), new Color('#7fa9bd')],
+  gold: new Color('#a3b79c'),
+  emerald: new Color('#789575'),
+  shadow: new Color('#2c3a29'),
+  float: [new Color('#789575'), new Color('#8fa98a'), new Color('#c4cba6'), new Color('#5e7a5b'), new Color('#a2b49b')],
 }
 
 function TrackPortraitAsset() {
@@ -92,9 +92,9 @@ function loadPortrait(): Promise<Point[]> {
 }
 
 function colorForBrightness(brightness: number) {
-  if (brightness > 0.69) return COLORS.gold.clone().lerp(new Color('#cfedfb'), Math.min(0.42, (brightness - 0.69) * 1.1))
-  if (brightness > 0.3) return COLORS.emerald.clone().lerp(new Color('#95afda'), (brightness - 0.3) * 0.38)
-  return COLORS.shadow.clone().lerp(new Color('#525c6a'), brightness * 0.4)
+  if (brightness > 0.69) return COLORS.gold.clone().lerp(new Color('#d6dcb9'), Math.min(0.42, (brightness - 0.69) * 1.1))
+  if (brightness > 0.3) return COLORS.emerald.clone().lerp(new Color('#9fb399'), (brightness - 0.3) * 0.38)
+  return COLORS.shadow.clone().lerp(new Color('#556552'), brightness * 0.4)
 }
 
 function makeBubbles(count: number, points: Point[]): Bubble[] {
@@ -132,7 +132,7 @@ function Bubbles({ count, progress, pointer, mobile }: {
   const mesh = useRef<InstancedMesh>(null)
   const material = useRef<MeshPhysicalMaterial>(null)
   const dummy = useMemo(() => new Object3D(), [])
-  const { viewport, size } = useThree()
+  const { viewport } = useThree()
   const reducedMotion = useReducedMotion()
   const [points, setPoints] = useState<Point[]>([])
   const bubbles = useMemo(() => makeBubbles(count, points), [count, points])
@@ -220,7 +220,7 @@ function Bubbles({ count, progress, pointer, mobile }: {
         metalness={0.2}
         clearcoat={1}
         clearcoatRoughness={0.07}
-        emissive="#162235"
+        emissive="#1c2619"
         emissiveIntensity={0.14}
         opacity={0.46}
         transparent
@@ -270,7 +270,7 @@ function CanvasFallback() {
       y: randomFor(index, 2),
       radius: 1 + randomFor(index, 3) * 3,
       phase: index * 0.4,
-      color: ['#3b82f6', '#5fb5dd', '#e9e9df', '#60a5fa'][index % 4],
+      color: ['#789575', '#8fa98a', '#c4cba6', '#5e7a5b'][index % 4],
     }))
     let frame = 0
     let width = 0

@@ -3,11 +3,11 @@ import { AnimatePresence } from 'framer-motion'
 import { ArrowUpRight, BookOpen, Github, Linkedin, Lock, Sparkles } from 'lucide-react'
 import { projects, type Project } from '../data/projects'
 import { socialLinks } from '../data/profile'
-import { Reveal } from '../components/Reveal'
-import { SectionHeading } from '../components/SectionHeading'
-import { Tilt3D } from '../components/Tilt3D'
-import { ProjectDocs } from '../components/ProjectDocs'
-import { responsive } from '../lib/img'
+import { Reveal } from '../components/ui/Reveal'
+import { SectionHeading } from '../components/ui/SectionHeading'
+import { Tilt3D } from '../components/ui/Tilt3D'
+import { ProjectDocs } from '../components/ui/ProjectDocs'
+import { responsive } from '../utils/image'
 
 function ProjectCard({ project, total, reversed, onDocs }: { project: Project; total: number; reversed?: boolean; onDocs: (project: Project) => void }) {
   const mediaAction = project.docs ? () => onDocs(project) : undefined

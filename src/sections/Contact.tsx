@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
 import { ArrowDownToLine, ArrowRight, ArrowUpRight, Check, Copy, MessageCircle } from 'lucide-react'
 import { contactMethods, profile, socials } from '../data/profile'
-import { Logo } from '../components/Logo'
-import { Reveal } from '../components/Reveal'
-import { SectionHeading } from '../components/SectionHeading'
+import { Logo } from '../components/ui/Logo'
+import { Reveal } from '../components/ui/Reveal'
+import { SectionHeading } from '../components/ui/SectionHeading'
 
 export function Contact() {
   const [copyStatus, setCopyStatus] = useState<'copied' | 'error' | null>(null)

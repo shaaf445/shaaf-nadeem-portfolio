@@ -1,8 +1,8 @@
 import { lazy, Suspense, useCallback, useEffect, useState } from 'react'
 import { MotionConfig } from 'framer-motion'
-import { Preloader } from './components/Preloader'
-import { Navbar } from './components/Navbar'
-import { Cursor } from './components/Cursor'
+import { Preloader } from './components/layout/Preloader'
+import { Navbar } from './components/layout/Navbar'
+import { Cursor } from './components/layout/Cursor'
 import { Hero } from './sections/Hero'
 import { About } from './sections/About'
 import { Skills } from './sections/Skills'
@@ -12,11 +12,11 @@ import { Education } from './sections/Education'
 import { Services } from './sections/Services'
 import { Certifications } from './sections/Certifications'
 import { Contact } from './sections/Contact'
-import { SafeBoundary } from './components/SafeBoundary'
+import { SafeBoundary } from './components/ui/SafeBoundary'
 import { useSmoothScroll } from './hooks/useSmoothScroll'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-const BubbleWorld = lazy(() => import('./three/BubbleWorld').then((module) => ({ default: module.BubbleWorld })))
+const BubbleWorld = lazy(() => import('./components/three/BubbleWorld').then((module) => ({ default: module.BubbleWorld })))
 
 function ScrollProgress() {
   useEffect(() => {

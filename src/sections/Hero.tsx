@@ -3,7 +3,7 @@ import { ArrowDown, ArrowDownToLine, ArrowUpRight, MoveUpRight } from 'lucide-re
 import { motion, useScroll, useSpring, useTransform } from 'framer-motion'
 import { profile, socialLinks } from '../data/profile'
 import { useReducedMotion } from '../hooks/useReducedMotion'
-import { Tilt3D } from '../components/Tilt3D'
+import { Tilt3D } from '../components/ui/Tilt3D'
 
 function MagneticLink({ href, children, className }: { href: string; children: ReactNode; className: string }) {
   const reducedMotion = useReducedMotion()

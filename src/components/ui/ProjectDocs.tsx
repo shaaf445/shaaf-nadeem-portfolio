@@ -2,8 +2,8 @@ import { useEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
 import { motion } from 'framer-motion'
 import { ArrowUpRight, BookOpen, Github, X } from 'lucide-react'
-import type { Project } from '../data/projects'
-import { responsive } from '../lib/img'
+import type { Project } from '../../data/projects'
+import { responsive } from '../../utils/image'
 
 export function ProjectDocs({ project, onClose }: { project: Project; onClose: () => void }) {
   const panel = useRef<HTMLDivElement>(null)

@@ -2,8 +2,8 @@ import { useEffect, useRef } from 'react'
 import { animate, motion, useInView, useMotionValue, useTransform } from 'framer-motion'
 import { ArrowUpRight } from 'lucide-react'
 import { profile } from '../data/profile'
-import { Reveal } from '../components/Reveal'
-import { SectionHeading } from '../components/SectionHeading'
+import { Reveal } from '../components/ui/Reveal'
+import { SectionHeading } from '../components/ui/SectionHeading'
 
 function CountUp({ value }: { value: string }) {
   const ref = useRef<HTMLSpanElement>(null)

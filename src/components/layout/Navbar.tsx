@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { ArrowUpRight, Menu, X } from 'lucide-react'
-import { navigation, profile } from '../data/profile'
-import { Logo } from './Logo'
+import { navigation, profile } from '../../data/profile'
+import { Logo } from '../ui/Logo'
 
 export function Navbar() {
   const [active, setActive] = useState('top')

@@ -2,8 +2,8 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
 import { socialLinks } from './data/profile'
-import './styles.css'
-import './styles-3d.css'
+import './styles/global.css'
+import './styles/effects.css'
 
 const personSchema = document.querySelector<HTMLScriptElement>('script[type="application/ld+json"]')
 if (!personSchema) throw new Error('Person structured data script is missing.')

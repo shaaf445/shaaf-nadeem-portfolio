@@ -1,9 +1,9 @@
 import { ArrowUpRight } from 'lucide-react'
-import { Tilt3D } from '../components/Tilt3D'
-import { TechOrbit } from '../components/TechOrbit'
+import { Tilt3D } from '../components/ui/Tilt3D'
+import { TechOrbit } from '../components/ui/TechOrbit'
 import { skills } from '../data/skills'
-import { Reveal } from '../components/Reveal'
-import { SectionHeading } from '../components/SectionHeading'
+import { Reveal } from '../components/ui/Reveal'
+import { SectionHeading } from '../components/ui/SectionHeading'
 
 export function Skills() {
   return (

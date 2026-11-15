@@ -1,5 +1,5 @@
 import { useRef, type ReactNode, type PointerEvent } from 'react'
-import { useReducedMotion } from '../hooks/useReducedMotion'
+import { useReducedMotion } from '../../hooks/useReducedMotion'
 
 /**
  * Pointer-driven 3D tilt with a moving glare highlight.
